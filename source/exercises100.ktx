@@ -1119,6 +1119,7 @@ p = np.random.uniform(-10, 10, (10,2))
 print(np.array([distance(P0,P1,p_i) for p_i in p]))
 
 # Author: Yang Wu (Broadcasting)
+# Test solution update
 def distance_points_to_lines(p: np.ndarray, p_1: np.ndarray, p_2: np.ndarray) -> np.ndarray:
     x_0, y_0 = p.T  # Shape -> (n points, )
     x_1, y_1 = p_1.T  # Shape -> (n lines, )
