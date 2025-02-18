@@ -44,7 +44,7 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "solutions update from {{ env.SHA_SHORT }}"
+          commit_message: "solutions update from ${{ env.SHA_SHORT }}"
           file_pattern: >
             100_Numpy_exercises.ipynb 
             100_Numpy_random.ipynb 
