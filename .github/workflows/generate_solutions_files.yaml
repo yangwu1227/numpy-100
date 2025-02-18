@@ -30,15 +30,21 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip3 install -r requirements.txt
+        run: | 
+          pip3 install -r requirements.txt
 
       - name: Generate solutions files
-        run: python3 generators.py
+        run: |
+          python3 generators.py
+
+      - name: Environment variables
+        run: |
+          echo "SHA_SHORT=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "solutions update from $(git rev-parse --short $GITHUB_SHA)"
+          commit_message: "solutions update from {{ env.SHA_SHORT }}"
           file_pattern: >
             100_Numpy_exercises.ipynb 
             100_Numpy_random.ipynb 
@@ -46,4 +52,3 @@ jobs:
             100_Numpy_exercises_with_hints.md 
             100_Numpy_exercises_with_hints_with_solutions.md 
             100_Numpy_exercises_with_solutions.md
-
